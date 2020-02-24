@@ -75,12 +75,12 @@ def create_train_dataloader(root, use_flip, batch_size):
     dmap_trans = ToTensor()
     dataset = CrowdDataset(root=root, phase='train', main_transform=main_trans, 
                     img_transform=img_trans,dmap_transform=dmap_trans)
-    dataloader = torch.utils.data.DataLoader(dataset,batch_size=batch_size,shuffle=True)
+    dataloader = torch.utils.data.DataLoader(dataset,batch_size=batch_size,shuffle=True,pin_memory=True,num_workers=10)
     return dataloader
 
 def create_test_dataloader(root):
     '''
-    Create train dataloader.
+    Create test dataloader.
     root: the dataset root.
     '''
     main_trans_list = []
@@ -90,7 +90,7 @@ def create_test_dataloader(root):
     dmap_trans = ToTensor()
     dataset = CrowdDataset(root=root, phase='test', main_transform=main_trans, 
                     img_transform=img_trans,dmap_transform=dmap_trans)
-    dataloader = torch.utils.data.DataLoader(dataset,batch_size=1,shuffle=False)
+    dataloader = torch.utils.data.DataLoader(dataset,batch_size=1,shuffle=False,pin_memory=True,num_workers=10)
     return dataloader
 
 #----------------------------------#
