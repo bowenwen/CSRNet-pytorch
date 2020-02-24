@@ -43,7 +43,7 @@ def generate_fixed_kernel_densitymap(image,points,sigma=15):
     return densitymap    
     
 if __name__ == '__main__':
-    data_root_dir = './data/ShanghaiTech_Crowd_Counting_Dataset/part_B_final/'
+    data_root_dir = '../data/ShanghaiTech_Crowd_Counting_Dataset/part_B_final/'
     phase_list = ['train','test']
     for phase in phase_list:
         if not os.path.exists(data_root_dir+phase+'_data/densitymaps'):

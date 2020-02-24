@@ -58,7 +58,7 @@ def generate_k_nearest_kernel_densitymap(image,points):
 
 
 if __name__ == "__main__":
-    data_root_dir = './data/ShanghaiTech_Crowd_Counting_Dataset/part_A_final/'
+    data_root_dir = '../data/ShanghaiTech_Crowd_Counting_Dataset/part_A_final/'
     phase_list = ['train','test']
     for phase in phase_list:
         if not os.path.exists(data_root_dir+phase+'_data/densitymaps'):
