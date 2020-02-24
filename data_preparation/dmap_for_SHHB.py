@@ -43,13 +43,14 @@ def generate_fixed_kernel_densitymap(image,points,sigma=15):
     return densitymap    
     
 if __name__ == '__main__':
+    data_root_dir = './data/ShanghaiTech_Crowd_Counting_Dataset/part_B_final/'
     phase_list = ['train','test']
     for phase in phase_list:
-        if not os.path.exists('./'+phase+'_data/densitymaps'):
-            os.mkdir('./'+phase+'_data/densitymaps')
-        image_file_list = os.listdir('./'+phase+'_data/images')
+        if not os.path.exists(data_root_dir+phase+'_data/densitymaps'):
+            os.mkdir(data_root_dir+phase+'_data/densitymaps')
+        image_file_list = os.listdir(data_root_dir+phase+'_data/images')
         for image_file in tqdm(image_file_list):
-            image_path = './'+phase+'_data/images/' + image_file
+            image_path = data_root_dir+phase+'_data/images/' + image_file
             mat_path = image_path.replace('images','ground_truth').replace('IMG','GT_IMG').replace('.jpg','.mat')
             image = plt.imread(image_path)
             mat = loadmat(mat_path)

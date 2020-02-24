@@ -8,6 +8,7 @@ import scipy
 import scipy.io as io
 from scipy.ndimage.filters import gaussian_filter
 from scipy.io import loadmat
+from scipy import spatial
 import os
 import glob
 from matplotlib import pyplot as plt
@@ -51,19 +52,20 @@ def generate_k_nearest_kernel_densitymap(image,points):
             if points_quantity > 3:
                 sigma = (distances[i][1]+distances[i][2]+distances[i][3])*0.1
             else:
-                sigma = np.average(np.array(gt.shape))/2./2. #case: 1 point
+                sigma = np.average(np.array(pt.shape))/2./2. #case: 1 point
             densitymap += scipy.ndimage.filters.gaussian_filter(pt2d, sigma, mode='constant')
         return densitymap
 
 
 if __name__ == "__main__":
+    data_root_dir = './data/ShanghaiTech_Crowd_Counting_Dataset/part_A_final/'
     phase_list = ['train','test']
     for phase in phase_list:
-        if not os.path.exists('./'+phase+'_data/densitymaps'):
-            os.makedirs('./'+phase+'_data/densitymaps')
-        image_file_list = os.listdir('./'+phase+'_data/images')
+        if not os.path.exists(data_root_dir+phase+'_data/densitymaps'):
+            os.makedirs(data_root_dir+phase+'_data/densitymaps')
+        image_file_list = os.listdir(data_root_dir+phase+'_data/images')
         for image_file in tqdm(image_file_list):
-            image_path = './'+phase+'_data/images/' + image_file
+            image_path = data_root_dir+phase+'_data/images/' + image_file
             mat_path = image_path.replace('images','ground_truth').replace('IMG','GT_IMG').replace('.jpg','.mat')
             image = plt.imread(image_path)
             mat = loadmat(mat_path)
