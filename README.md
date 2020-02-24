@@ -2,9 +2,19 @@
 This is an simple and clean implemention of CVPR 2018 paper ["CSRNet: Dilated Convolutional Neural Networks for Understanding the Highly Congested Scenes"](https://arxiv.org/abs/1802.10062).  
 
 ## Requirement
-1. Install pytorch 1.0.0+
-2. Install tensorboardX
-3. Clone this repository  
+1. Install pytorch 1.0.0+, tensorboardX, opencv, etc.
+
+    ```bash
+    conda remove --name pytorch --all
+    conda create -n pytorch python=3.7.3 numpy scipy ipykernel
+    conda activate pytorch
+    conda install -y -c pytorch pytorch=1.4.0 torchvision=0.5.0 cudatoolkit=10.1
+    conda install -y -c conda-forge opencv matplotlib h5py tensorboardx tqdm pylint
+    ipython kernel install --user --name=pytorch
+    conda deactivate
+    ```
+
+2. Clone this repository  
     ```git
     git clone https://github.com/CommissarMa/CSRNet-pytorch.git
     ```
