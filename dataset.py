@@ -93,6 +93,21 @@ def create_test_dataloader(root):
     dataloader = torch.utils.data.DataLoader(dataset,batch_size=1,shuffle=False,pin_memory=True,num_workers=10)
     return dataloader
 
+def create_test_extra_dataloader(root):
+    '''
+    Create test dataloader for some extra out of sample images.
+    root: the dataset root.
+    '''
+    main_trans_list = []
+    main_trans_list.append(PairedCrop())
+    main_trans = Compose(main_trans_list)
+    img_trans = Compose([ToTensor(), Normalize(mean=[0.5,0.5,0.5],std=[0.225,0.225,0.225])])
+    dmap_trans = ToTensor()
+    dataset = CrowdDataset(root=root, phase='test_extra', main_transform=main_trans, 
+                    img_transform=img_trans,dmap_transform=dmap_trans)
+    dataloader = torch.utils.data.DataLoader(dataset,batch_size=1,shuffle=False,pin_memory=True,num_workers=10)
+    return dataloader
+
 #----------------------------------#
 #          Transform code          #
 #----------------------------------#
