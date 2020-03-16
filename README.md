@@ -6,10 +6,10 @@ This is an simple and clean implemention of CVPR 2018 paper ["CSRNet: Dilated Co
 
     ```bash
     conda remove --name pytorch --all
-    conda create -n pytorch python=3.7.3 numpy scipy ipykernel
+    conda create -n pytorch -y python=3.7.3 numpy scipy ipykernel
     conda activate pytorch
-    conda install -y -c pytorch pytorch=1.4.0 torchvision=0.5.0 cudatoolkit=10.1
     conda install -y -c conda-forge opencv matplotlib h5py tensorboardx tqdm pylint
+    conda install -y -c pytorch pytorch=1.4.0 torchvision=0.5.0 cudatoolkit=10.1
     ipython kernel install --user --name=pytorch
     conda deactivate
     ```
@@ -40,3 +40,9 @@ sub dataset folder like 'ROOT/data/part_A_final' and run it)
 1. We trained the model and got 67.74 MAE at 124-th epoch on ShanghaiTech PartA. Got 8.68 
 MAE on PartB at 94-th epoch. 
 2. If you are new to crowd counting, we recommand you to take a look at [Crowd_counting_from_scratch](https://github.com/CommissarMa/Crowd_counting_from_scratch) first. It is a tutorial for crowd counting beginner.
+
+
+## Download Crowd Data
+* https://www.kaggle.com/tthien/shanghaitech-with-people-density-map
+* https://www.kaggle.com/tthien/shanghaitech
+* https://www.kaggle.com/danaelisanicolas/high-density-crowd-counting
